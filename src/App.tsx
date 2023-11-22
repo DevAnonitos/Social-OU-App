@@ -1,11 +1,23 @@
+import React from 'react';
 import './globals.css';
+import { Route, Routes } from 'react-router-dom';
 
-function App() {
-  
-
+const App = () => {
   return (
     <>
-      Hello World
+      <main className='flex h-screen'>
+        <Routes>
+          {/* Public Route App */}
+          <Route>
+
+          </Route>
+
+          {/* Private Route App */}
+          <Route>
+          
+          </Route>    
+        </Routes>
+      </main>
     </>
   );
 };
