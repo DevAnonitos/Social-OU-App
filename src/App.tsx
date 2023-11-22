@@ -9,12 +9,12 @@ const App = () => {
         <Routes>
           {/* Public Route App */}
           <Route>
-
+            main
           </Route>
 
           {/* Private Route App */}
           <Route>
-          
+            Main
           </Route>    
         </Routes>
       </main>
