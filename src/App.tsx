@@ -3,6 +3,7 @@ import './globals.css';
 import { Route, Routes } from 'react-router-dom';
 
 import AuthLayout from './_auth/AuthLayout';
+import RootLayout from './_root/RootLayout';
 
 const App = () => {
   return (
@@ -11,12 +12,12 @@ const App = () => {
         <Routes>
           {/* Public Route App */}
           <Route element={<AuthLayout />}>
-            main
+            {/* To access Auth path */}
           </Route>
 
           {/* Private Route App */}
-          <Route>
-            Main
+          <Route element={<AuthLayout />}>
+            {/* To access main path */}
           </Route>    
         </Routes>
       </main>
