@@ -3,3 +3,7 @@ export { default as ExplorePage } from "./ExplorePage";
 export { default as ProfilePage } from "./ProfilePage";
 export { default as EditPost } from "./EditPost";
 export { default as CreatePost } from "./CreatePost";
+export { default as AllUsers } from "./AllUsers";
+export { default as LikePosts } from "./LikedPosts";
+export { default as PostDetails } from "./PostDetails";
+export { default as Saved } from "./Saved";
