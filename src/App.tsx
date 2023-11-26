@@ -34,7 +34,7 @@ const App = () => {
           </Route>
 
           {/* Private Route App */}
-          <Route element={<AuthLayout />}>
+          <Route element={<RootLayout />}>
             {/* To access main path */}
             <Route index element={<HomePage />} />
             <Route path='/explore' element={<ExplorePage />} />
