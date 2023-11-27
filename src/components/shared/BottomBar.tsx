@@ -1,8 +1,13 @@
 import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 const BottomBar = () => {
   return (
-    <div>BottomBar</div>
+    <>
+      <section className='bottom-bar border-l-[1px] border-gray-700'>
+        
+      </section>
+    </>
   );
 };
 
