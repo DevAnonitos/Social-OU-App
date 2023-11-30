@@ -17,7 +17,7 @@ const LeftSideBar = () => {
               width={55}
               height={36}
             />
-            OUSA
+            OUS
           </Link>
         </div>
       </nav>
