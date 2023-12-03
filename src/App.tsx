@@ -21,6 +21,8 @@ import {
   UpdateProfile,
 } from './_root/pages';
 
+import { NotFound, GlobalError, } from './components/status';
+
 const App = () => {
   return (
     <>
@@ -29,14 +31,16 @@ const App = () => {
           {/* Public Route App */}
           <Route element={<AuthLayout />}>
             {/* To access Auth path */}
-            <Route path='sign-in' element={<SigninForm />} />
+            <Route  path='sign-in' element={<SigninForm />} />
             <Route path='sign-up' element={<SignupForm />} />
+            <Route path="*" element={<NotFound />} />
           </Route>
 
           {/* Private Route App */}
           <Route element={<RootLayout />}>
             {/* To access main path */}
             <Route index element={<HomePage />} />
+            <Route path="*" element={<NotFound />} />
             <Route path='/explore' element={<ExplorePage />} />
             <Route path='/saved' element={<Saved />} />
             <Route path='/all-users' element={<AllUsers />} />
