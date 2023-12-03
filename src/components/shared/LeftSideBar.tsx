@@ -4,6 +4,7 @@ import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { INavLink } from '@/types';
 import { Loader } from '.';
 import { sidebarLinks } from '@/constants';
+import { Button } from '../ui';
 
 let isLoading: string;
 
@@ -73,6 +74,13 @@ const LeftSideBar = () => {
             })}
           </ul>
         </div>
+
+        <Button variant="ghost" className='shad-button_ghost' onClick={() => {}}>
+          <img src="/assets/icons/logout.svg" alt="logout" />
+          <p className="small-medium lg:base-medium text-red">
+            LogoutApp
+          </p>
+        </Button>
       </nav>
     </>
   );
