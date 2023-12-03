@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import { 
   TopBar, 
   BottomBar, 
@@ -8,6 +8,7 @@ import {
 } from '@/components/shared';
 
 const RootLayout = () => {
+
   return (
     <>
       <div className='w-full md:flex'>

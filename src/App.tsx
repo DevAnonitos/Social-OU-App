@@ -21,7 +21,7 @@ import {
   UpdateProfile,
 } from './_root/pages';
 
-import { NotFound, GlobalError, } from './components/status';
+import { NotFound } from './components/status';
 
 const App = () => {
   return (

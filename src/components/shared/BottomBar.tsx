@@ -12,14 +12,14 @@ const BottomBar = () => {
         {bottombarLinks.map((link) => {
 
           const isActive = pathname === link.route;
-          
+
           return (
             <React.Fragment key={`bottombar-${link.label}`}>
               <Link
                 to={link.route}
                 className={`${
                   isActive && 'rounded-full bg-primary-500'
-                } flex-center flex-col gap-1 p-2 transition`}
+                } flex-center flex-col gap-1 p-2 transition-all ease-in-out duration-200`}
               >
                 <img
                   src={link.imgURL}
