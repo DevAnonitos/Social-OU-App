@@ -7,8 +7,6 @@ const TopBar = () => {
 
   const navigate = useNavigate();
 
-
-
   return (
     <>
       <nav className='topbar border-b-[1px] border-gray-700'>
