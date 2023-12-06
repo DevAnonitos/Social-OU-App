@@ -4,7 +4,32 @@ import { useInView } from "react-intersection-observer";
 import { Input } from '@/components/ui';
 import { Loader, GridPostList } from '@/components/shared';
 
+export type SearchResultProps = {
+  isSearchFetching: boolean;
+  searchedPosts: any;
+};
+
+const SearchResult = ({ isSearchFetching, searchedPosts }: SearchResultProps) => {
+  if(isSearchFetching){
+    return <Loader />
+  } else if(searchedPosts && searchedPosts.document.length > 0) {
+    // return GridPostList
+    <GridPostList />
+  } else {
+    return (
+      <>
+        <p className='text-light-4 mt-10 text-center w-full'>
+          No results found
+        </p>
+      </>
+    );
+  }
+};
+
 const ExplorePage = () => {
+
+  
+
   return (
     <>
       <div className='explore-container'>
