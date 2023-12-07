@@ -1,8 +1,25 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-const GridPostList = () => {
+import { PostStats } from '.';
+
+type GridPostListProps = {
+  post: Document[] |null;
+  showUser?: boolean;
+  showStats:  boolean;
+};
+
+const GridPostList = ({post, showUser = true, showStats = true }: GridPostListProps) => {
   return (
-    <div>GridPostList</div>
+    <>
+      <ul className='grid-container'>
+        {post.map((post) => (
+          <li className='relative min-w-80 h-80'>
+            
+          </li>
+        ))}
+      </ul>
+    </>
   );
 };
 
