@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { PostStats } from '.';
 
 type GridPostListProps = {
-  post: Document[] |null;
+  post: Document[];
   showUser?: boolean;
   showStats:  boolean;
 };
