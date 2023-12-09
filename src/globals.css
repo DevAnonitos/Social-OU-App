@@ -242,7 +242,7 @@
 
   /* User card */
   .user-card {
-    @apply flex-center flex-col gap-4 border border-dark-4 rounded-[20px] px-5 py-8;
+    @apply flex-between items-center justify-center flex-row gap-4 rounded-2xl px-5 py-4;
   }
 }
 

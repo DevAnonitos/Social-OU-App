@@ -17,6 +17,7 @@ const HomePage = () => {
           <h3 className='h3-bold text-light-1'>
             Top Creators✨
           </h3>
+          <UserCard />
         </div>
       </div>
     </>
