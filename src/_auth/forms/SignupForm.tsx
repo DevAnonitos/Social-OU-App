@@ -19,6 +19,8 @@ import {
 
 import { SignUpValidation } from '@/lib/validation';
 
+import { createUserAccount } from '@/lib/appwrite/api';
+
 const SignupForm = () => {
 
   const { toast } = useToast();
@@ -34,6 +36,12 @@ const SignupForm = () => {
     },
   });
 
+  async function onSubmit (values: z.infer<typeof SignUpValidation>) {
+    const newUser =  await createUserAccount(values);
+
+    console.log(newUser);
+  }
+
   return (
     <>
       <Form {...form}>
@@ -47,7 +55,10 @@ const SignupForm = () => {
             To use hub, Please enter your details
           </p>
 
-          <form className='flex flex-col gap-5 w-full mt-4'>
+          <form 
+            className='flex flex-col gap-5 w-full mt-4' 
+            onSubmit={form.handleSubmit(onSubmit)}
+          >
             <FormField
               control={form.control}
               name='name'
