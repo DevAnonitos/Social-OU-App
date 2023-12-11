@@ -48,3 +48,7 @@ export const bottombarLinks = [
     label: "Create",
   },
 ];
+
+export const bannerSlideAuth = [
+  
+];
