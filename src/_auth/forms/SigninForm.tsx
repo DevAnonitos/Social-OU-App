@@ -33,6 +33,10 @@ const SigninForm = () => {
     },
   });
 
+  const handleSignIn = async (user: z.infer<typeof SignInValidation>) => {
+    
+  };  
+
   return (
     <>
       <Form {...form}>
@@ -47,7 +51,10 @@ const SigninForm = () => {
           <p className='text-light-3 small-medium md:base-regular mt-2'>
             Welcome back! Please enter your details.
           </p>
-          <form className='flex flex-col gap-5 w-full mt-4'>
+          <form 
+            className='flex flex-col gap-5 w-full mt-4'
+            onSubmit={form.handleSubmit(handleSignIn)}
+          >
             <FormField
               control={form.control}
               name='email'
