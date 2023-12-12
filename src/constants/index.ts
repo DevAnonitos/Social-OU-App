@@ -50,5 +50,8 @@ export const bottombarLinks = [
 ];
 
 export const bannerSlideAuth = [
-  
+  {
+    imageURL: "/assets/images/img1.svg",
+    index: 0,
+  },
 ];

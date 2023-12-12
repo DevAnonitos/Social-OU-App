@@ -1,7 +1,7 @@
 import React from 'react';
 import { Outlet, Navigate } from 'react-router-dom';
 
-
+import { bannerSlideAuth } from '@/constants';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -15,7 +15,7 @@ const AuthLayout = () => {
                 </section>
 
                 <div 
-                    className='hidden xl:block h-screen w-1/2 border-l-[1px] border-gray-700'
+                    className='hidden xl:block h-screen w-1/2 border-l-[1px] border-gray-700 justify-center items-center'
                 >
                     <Swiper 
                         spaceBetween={0} 
@@ -25,7 +25,6 @@ const AuthLayout = () => {
                         pagination={{ clickable: true }}
                         autoplay={{ delay: 300 }}
                     >
-                    
                     </Swiper>
                 </div>
             </>
