@@ -48,10 +48,10 @@ const SignupForm = () => {
         <div className='sm:w-420 flex-center flex-col'>
           <img src="/assets/images/logo.svg" alt="logo" />
 
-          <h2 className="h3-bold md:h2-bold pt-5 sm:pt-12">
+          <h2 className="h3-bold md:h2-bold pt-5 sm:pt-2">
             Create a new account
           </h2>
-          <p className="text-light-3 small-medium md:base-regular mt-2">
+          <p className="text-light-3 small-medium md:base-regular">
             To use hub, Please enter your details
           </p>
 
@@ -69,7 +69,7 @@ const SignupForm = () => {
                     <FormControl>
                       <Input type="text" className="shad-input" {...field} />
                     </FormControl>
-                    <FormMessage />
+                    <FormMessage className='text-red' />
                   </FormItem>
                 </>
               )}
@@ -85,7 +85,7 @@ const SignupForm = () => {
                     <FormControl>
                       <Input type="text" className="shad-input" {...field} />
                     </FormControl>
-                    <FormMessage />
+                    <FormMessage className='text-red' />
                   </FormItem>
                 </>
               )}
@@ -101,7 +101,7 @@ const SignupForm = () => {
                     <FormControl>
                       <Input type="text" className="shad-input" {...field} />
                     </FormControl>
-                    <FormMessage />
+                    <FormMessage className='text-red' />
                   </FormItem>
                 </>
               )}
@@ -117,7 +117,7 @@ const SignupForm = () => {
                     <FormControl>
                       <Input type="text" className="shad-input" {...field} />
                     </FormControl>
-                    <FormMessage />
+                    <FormMessage className='text-red' />
                   </FormItem>
                 </>
               )}
@@ -127,14 +127,18 @@ const SignupForm = () => {
               Sign Up
             </Button>
 
-            <p className='text-small-regular text-light-2 text-center mt-2'>
-              Are you already have an account?
+            <p className='flex flex-col justify-center items-center text-small-regular text-light-2 text-center mt-1'>
               <Link
                 to="/sign-in"
-                className="text-primary-500 text-small-semibold ml-1"
+                className="text-primary-500 text-small-semibold ml-1 bg-primary-500 p-2 mb-2 rounded-xl"
               >
-                Log in
+                <img 
+                  src="/assets/icons/arrow-right.svg" 
+                  alt="Login" 
+                  className='w-12 h-12 object-contain rotate-180' 
+                />
               </Link>
+              Are you already have an account?
             </p>
           </form>
         </div>

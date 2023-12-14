@@ -44,7 +44,7 @@ const SigninForm = () => {
             src="/assets/images/logo.svg" 
             alt="logo" 
           />
-          <h2 className='h3-gold md:h2-bold pt-5 sm:pt-12'>
+          <h2 className='h3-gold md:h2-bold pt-5 sm:pt-4'>
             Log in to your account
           </h2>
           <p className='text-light-3 small-medium md:base-regular mt-2'>
@@ -66,7 +66,7 @@ const SigninForm = () => {
                     <FormControl>
                       <Input type="text" className="shad-input" {...field} />
                     </FormControl>
-                    <FormMessage />
+                    <FormMessage className='text-red' />
                   </FormItem>
                 </>
               )}
@@ -84,7 +84,7 @@ const SigninForm = () => {
                     <FormControl>
                       <Input type="text" className="shad-input" {...field} />
                     </FormControl>
-                    <FormMessage />
+                    <FormMessage className='text-red' />
                   </FormItem>
                 </>
               )}
@@ -94,14 +94,18 @@ const SigninForm = () => {
               LogIn
             </Button>
 
-            <p className="text-small-regular text-light-2 text-center mt-2">
-              Don&apos;t have an account?
-              <Link
+            <p className="flex flex-col justify-center items-center text-small-regular text-light-2 text-center mt-2">
+            <Link
                 to="/sign-up"
-                className="text-primary-500 text-small-semibold ml-1"
+                className="text-primary-500 text-small-semibold ml-1 bg-primary-500 p-2 mb-2 rounded-xl"
               >
-                Sign up
+                <img 
+                  src="/assets/icons/arrow-right.svg" 
+                  alt="SignUp" 
+                  className='w-12 h-12 object-contain' 
+                />
               </Link>
+              Don&apos;t have an account?
             </p>
           </form>
         </div>

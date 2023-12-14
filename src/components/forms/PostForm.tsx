@@ -10,7 +10,7 @@ import {
   FormField, 
   FormItem, 
   FormLabel, 
-  FormMessage 
+  FormMessage, 
 } from '../ui';
 import { useToast } from '../ui';
 
@@ -27,7 +27,9 @@ const PostForm = () => {
   };
 
   return (
-    <div>PostForm</div>
+    <>
+      
+    </>
   );
 };
 
