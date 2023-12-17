@@ -3,7 +3,7 @@ import {
   Account, 
   Databases, 
   Storage, 
-  Avatars 
+  Avatars,
 } from "appwrite";
 
 export const appwriteConfig = {

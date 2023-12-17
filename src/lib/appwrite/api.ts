@@ -36,3 +36,27 @@ export async function createUserAccount(user: INewUser) {
     return error;
   }
 };
+
+export async function saveUserToDb(user: {
+  accountId: string;
+  email: string;
+  name: string;
+  imageUrl: URL;
+  username?: string;
+}) {
+  try {
+    
+  } catch (error: any) {
+    console.log(error);
+  }
+};
+
+export async function getAccount() {
+  try {
+    const currentAccount = await account.get();
+
+    return currentAccount;
+  } catch (error: any) {
+    console.log(error);
+  }
+}
