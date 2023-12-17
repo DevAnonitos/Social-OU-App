@@ -59,4 +59,27 @@ export async function getAccount() {
   } catch (error: any) {
     console.log(error);
   }
+};
+
+export async function signOutAccount() {
+  try {
+    const session = await account.deleteSession("current");
+
+    return session;
+  } catch (error: any) {
+    console.log(error);
+  }
+};
+
+export async function signInAccount(user: {
+  email: string;
+  password: string;
+}) {
+  try {
+    const session = await account.createEmailSession(user.email, user.password);
+
+    return session;
+  } catch (error: any) {
+    console.log(error);
+  }
 }
