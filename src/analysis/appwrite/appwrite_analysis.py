@@ -1,5 +1,7 @@
 import requests
 from config import appwrite_endpoint, project_id, secret_key
+import os
+
 
 class AppwriteClient:
   
@@ -30,8 +32,20 @@ class AppwriteClient:
       print(f'|Error {response.status_code} - {response.text}')
 
   def process_data(self, data):
-    for document in data['documents']:
-      print(document)
+    file_path = 'data.csv'
+    fieldnames = ['field1', 'field2', 'field3']  # Replace with your field names
+
+    if not os.path.exists(file_path):
+      with open(file_path, 'w', newline='') as csvfile:
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+        writer.writeheader()
+
+      with open(file_path, 'a', newline='') as csvfile:
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+
+        for document in data['documents']:
+          writer.writerow(document['data'])
+          print(document['data'])
 # Loading env file from env local app
 
 client = AppwriteClient(appwrite_endpoint, project_id, secret_key)
