@@ -12,8 +12,6 @@ import {
   AlertDialogTrigger 
 } from '../ui';
 
-import { Button } from '../ui';
-
 const ConfirmForm = () => {
   return (
     <div>
@@ -22,15 +20,19 @@ const ConfirmForm = () => {
         </AlertDialogTrigger>
         <AlertDialogContent className='border-[1px] border-gray-700'>
           <AlertDialogHeader>
-            <AlertDialogTitle className='text-red'>Are you absolutely sure?</AlertDialogTitle>
+            <AlertDialogTitle className='text-red'>Are you sure delete?</AlertDialogTitle>
             <AlertDialogDescription>
               This action cannot be undone. This will permanently delete your
               account and remove your data from our servers.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel className='border-[1px] border-gray-700'>Cancel</AlertDialogCancel>
-            <AlertDialogAction>Continue</AlertDialogAction>
+            <AlertDialogCancel className='border-[1px] border-gray-700 text-red'>
+              Cancel
+            </AlertDialogCancel>
+            <AlertDialogAction className='text-green-500'>
+              Continue
+            </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
