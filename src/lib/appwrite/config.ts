@@ -16,7 +16,6 @@ export const client = new Client();
 client.setEndpoint(appwriteConfig.url);
 client.setProject(appwriteConfig.projectId);
 
-
 // export config func
 export const account = new Account(client);
 export const database = new Databases(client);
