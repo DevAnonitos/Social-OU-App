@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import { Models } from 'appwrite';
 import { Button } from '../ui';
 
 type UserCardProps = {
-
+  post: Models.Document[];
 };
 
-const UserCard = ({  }: UserCardProps) => {
+const UserCard = ({ post }: UserCardProps) => {
   return (
     <>
       <Link to={`/profile/`} className='user-card border-gray-700 border-[1px]'>
