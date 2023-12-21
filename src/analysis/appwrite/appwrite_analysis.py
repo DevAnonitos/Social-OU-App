@@ -1,7 +1,5 @@
-import os
 import requests
-import json
-from dotenv import load_dotenv
+from config import appwrite_endpoint, project_id, secret_key
 
 class AppwriteClient:
   
@@ -35,10 +33,5 @@ class AppwriteClient:
     for document in data['documents']:
       print(document)
 # Loading env file from env local app
-load_dotenv()
-
-appwrite_endpoint = os.getenv('APPWRITE_ENDPOINT')
-project_id = os.getenv('PROJECT_ID')
-secret_key = os.getenv('SECRET_KEY')
 
 client = AppwriteClient(appwrite_endpoint, project_id, secret_key)
