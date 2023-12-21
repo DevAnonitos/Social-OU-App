@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-
+import { Models } from 'appwrite';
 import { checkIsLiked } from '@/lib/utils';
 
 type PostStateProps = {
+  post: Models.Document[];
   userId: string;
 };
 
