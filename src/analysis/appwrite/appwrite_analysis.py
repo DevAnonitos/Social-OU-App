@@ -23,6 +23,17 @@ class AppwriteClient:
       'X-Appwrite-Key': self.secret_key,
     })
     
+    response = session.get(f'{self.endpoint}/database/collections/{collection_id}/documents')
+    
+    if response.status_code == 200:
+      data = response.json()
+      self.process_data(data)
+    else:
+      print(f'|Error {response.status_code} - {response.text}')
+
+  def process_data(self, data):
+    for document in data['documents']:
+      print(document)
 # Loading env file from env local app
 load_dotenv()
 
