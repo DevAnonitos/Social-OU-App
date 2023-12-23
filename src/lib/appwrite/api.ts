@@ -17,6 +17,7 @@ import {
 
 // Auth
 
+// func create userAccount
 export async function createUserAccount(user: INewUser) {
   try {
     const newAccount = await account.create(
@@ -37,6 +38,7 @@ export async function createUserAccount(user: INewUser) {
   }
 };
 
+// func saveUserToDb
 export async function saveUserToDb(user: {
   accountId: string;
   email: string;
@@ -51,6 +53,7 @@ export async function saveUserToDb(user: {
   }
 };
 
+// func getAccount from DB
 export async function getAccount() {
   try {
     const currentAccount = await account.get();
