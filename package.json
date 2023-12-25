@@ -42,7 +42,7 @@
 		"socket.io-client": "^4.7.2",
 		"solidjs-dropzone": "^1.0.0",
 		"swiper": "^11.0.5",
-		"tailwind-merge": "^2.0.0",
+		"tailwind-merge": "^2.2.0",
 		"tsconfig-paths": "^4.2.0",
 		"zod": "^3.22.4"
 	},
