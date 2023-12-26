@@ -16,6 +16,13 @@ export const client = new Client();
 client.setEndpoint(appwriteConfig.url);
 client.setProject(appwriteConfig.projectId);
 
+client.subscribe('files', response => {
+  if(response.events.includes('buckets.*.files.*.create')) {
+      // Log when a new file is uploaded
+      console.log(response.payload);
+  }
+});
+
 // export config func
 export const account = new Account(client);
 export const database = new Databases(client);
