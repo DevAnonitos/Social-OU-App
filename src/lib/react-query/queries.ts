@@ -16,6 +16,7 @@ import {
 } from "@/types";
 
 import { 
+  getCurrentUser,
   signInAccount,
   signOutAccount,
 } from "../appwrite/api";
@@ -36,3 +37,13 @@ export const useSignOutAccount = () => {
     mutationFn: signOutAccount,
   });
 };
+
+// GetCurrentUser
+
+export const useGetCurrentUser = () => {
+  return useQuery({
+    queryKey: [QUERY_KEYS.GET_CURRENT_USER],
+    queryFn: () => getCurrentUser,
+  });
+};
+
