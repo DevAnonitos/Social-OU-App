@@ -64,6 +64,28 @@ export async function getAccount() {
   }
 };
 
+export async function getCurrentUser() {
+  try {
+    // getAccount data api
+
+    const currentAccount = await getAccount();
+
+    if(!currentAccount) throw Error;
+
+    const currentUser =  await database.listDocuments(
+      appwriteConfig.databaseId,
+      appwriteConfig.userCollectionId,
+      [Query.equal("accountId", currentAccount.$id)],
+    );
+
+    if(!currentUser) throw Error;
+
+    return currentUser.documents[0];
+  } catch (error: any) {
+    console.log(error);
+  }
+};
+
 export async function signOutAccount() {
   try {
     const session = await account.deleteSession("current");
@@ -85,4 +107,4 @@ export async function signInAccount(user: {
   } catch (error: any) {
     console.log(error);
   }
-}
+};
