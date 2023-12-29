@@ -10,7 +10,7 @@ import {
 import { 
   appwriteConfig, 
   account, 
-  database, 
+  databases, 
   storage, 
   avatars 
 } from "./config";
@@ -31,7 +31,15 @@ export async function createUserAccount(user: INewUser) {
 
     const avatarUrl = avatars.getInitials(user.name);
 
-    return newAccount;
+    const newUser = await saveUserToDb({
+      accountId: newAccount.$id,
+      name: newAccount.name,
+      email: newAccount.email,
+      username: user.username,
+      imageUrl: avatarUrl,
+    });
+
+    return newUser;
   } catch (error: any) {
     console.log(error);
     return error;
@@ -47,7 +55,14 @@ export async function saveUserToDb(user: {
   username?: string;
 }) {
   try {
-    
+    const newUser = await databases.createDocument(
+      appwriteConfig.databaseId,
+      appwriteConfig.userCollectionId,
+      ID.unique(),
+      user,
+    );
+
+    return newUser;
   } catch (error: any) {
     console.log(error);
   }
@@ -72,7 +87,7 @@ export async function getCurrentUser() {
 
     if(!currentAccount) throw Error;
 
-    const currentUser =  await database.listDocuments(
+    const currentUser =  await databases.listDocuments(
       appwriteConfig.databaseId,
       appwriteConfig.userCollectionId,
       [Query.equal("accountId", currentAccount.$id)],
@@ -81,7 +96,7 @@ export async function getCurrentUser() {
     if(!currentUser) throw Error;
 
     return currentUser.documents[0];
-  } catch (error: any) {
+  } catch (error) {
     console.log(error);
   }
 };
