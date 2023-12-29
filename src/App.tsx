@@ -21,6 +21,8 @@ import {
   UpdateProfile,
 } from './_root/pages';
 
+import { Toaster } from './components/ui';
+
 import { NotFound } from './components/status';
 
 const App = () => {
@@ -51,6 +53,8 @@ const App = () => {
             <Route path='/update-profile/:id' element={<UpdateProfile />} />
           </Route>    
         </Routes>
+
+        <Toaster />
       </main>
     </>
   );
