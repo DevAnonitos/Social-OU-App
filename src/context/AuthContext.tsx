@@ -3,6 +3,8 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 
 import { IUser } from "@/types";
 
+import { getCurrentUser } from "@/lib/appwrite/api";
+
 export const INITIAL_USER = {
   id: "",
   name: "",
@@ -42,14 +44,44 @@ export  function AuthProvider ({ children }: { children: React.ReactNode }) {
     setIsLoading(true);
 
     try {
-      
+      const currentAccount = await getCurrentUser();
+
+      if(currentAccount) {
+        setUser({
+          id: currentAccount.$id,
+          name: currentAccount.name,
+          username: currentAccount.username,
+          email: currentAccount.email,
+          imageUrl: currentAccount.imageUrl,
+          bio: currentAccount.bio,
+        });
+
+        setIsAuthenticated(true);
+
+        return true;
+      };
+
+      return false;
     } catch (error: any) {
-      
+      console.error(error);
+      return false;
+    } finally {
+      setIsLoading(false);
     }
   };
 
   useEffect(() => {
+    const cookieFallback = localStorage.getItem("cookieFallback");
 
+    if(
+      cookieFallback === "[]" ||
+      cookieFallback === null ||
+      cookieFallback === undefined
+    ){
+      navigate("/sign-in");
+    }
+
+    checkAuthUser();
   }, []);
 
   const value = {
@@ -60,6 +92,14 @@ export  function AuthProvider ({ children }: { children: React.ReactNode }) {
     setIsAuthenticated,
     checkAuthUser,
   };
+
+  return (
+    <>
+      <AuthContext.Provider value={value}>
+        {children}
+      </AuthContext.Provider>; 
+    </>
+  )
 };
 
 export const useUserContext = () => useContext(AuthContext);
