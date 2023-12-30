@@ -4,10 +4,10 @@ import { Models } from 'appwrite';
 import { Button } from '../ui';
 
 type UserCardProps = {
-  post: Models.Document[];
+  user: Models.Document;
 };
 
-const UserCard = ({ post }: UserCardProps) => {
+const UserCard = ({ user }: UserCardProps) => {
   return (
     <>
       <Link to={`/profile/`} className='user-card border-gray-700 border-[1px]'>
