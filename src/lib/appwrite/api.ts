@@ -79,6 +79,7 @@ export async function getAccount() {
   }
 };
 
+
 export async function getCurrentUser() {
   try {
     // getAccount data api
@@ -101,6 +102,21 @@ export async function getCurrentUser() {
   }
 };
 
+
+export async function signInAccount(user: {
+  email: string;
+  password: string;
+}) {
+  try {
+    const session = await account.createEmailSession(user.email, user.password);
+    
+    return session;
+  } catch (error: any) {
+    console.log(error);
+  }
+};
+
+
 export async function signOutAccount() {
   try {
     const session = await account.deleteSession("current");
@@ -111,15 +127,25 @@ export async function signOutAccount() {
   }
 };
 
-export async function signInAccount(user: {
-  email: string;
-  password: string;
-}) {
-  try {
-    const session = await account.createEmailSession(user.email, user.password);
 
-    return session;
-  } catch (error: any) {
-    console.log(error);
+export async function getUsers(limit?: number) {
+  const queries: any[] = [Query.orderDesc("$createAt")];
+
+  if(limit) {
+    queries.push(Query.limit(limit));
   }
-};
+
+  try {
+    const user = await databases.listDocuments(
+      appwriteConfig.databaseId,
+      appwriteConfig.userCollectionId,
+      queries,
+    );
+
+    if(!user) throw Error;
+
+    return user;
+  } catch (error: any) {
+    
+  }
+}

@@ -12,14 +12,17 @@ import {
   INewPost, 
   INewUser, 
   IUpdatePost, 
-  IUpdateUser 
+  IUpdateUser, 
 } from "@/types";
 
 import { 
   getCurrentUser,
   signInAccount,
   signOutAccount,
+  getAccount,
+  getUsers,
 } from "../appwrite/api";
+import exp from "constants";
 
 // SignInAccount
 export const useSignInAccount = () => {
@@ -44,6 +47,13 @@ export const useGetCurrentUser = () => {
   return useQuery({
     queryKey: [QUERY_KEYS.GET_CURRENT_USER],
     queryFn: () => getCurrentUser,
+  });
+};
+
+export const userGetUsers = (limit?: number) => {
+  return useQuery({
+    queryKey: [QUERY_KEYS.GET_USERS],
+    queryFn: () => getUsers(limit)
   });
 };
 
