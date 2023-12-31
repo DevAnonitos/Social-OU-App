@@ -4,15 +4,26 @@ import { Models } from 'appwrite';
 import { checkIsLiked } from '@/lib/utils';
 
 type PostStateProps = {
-  post: Models.Document[];
+  post: Models.Document;
   userId: string;
 };
 
 const PostStats = ({ userId }: PostStateProps) => {
 
   const location = useLocation();
+
+
   const [likes, setLikes] = useState<string>();
   const [isSaved, setIsSaved] = useState(false);
+
+  const handleLikePost = () => {
+
+  };
+
+  const handlSavePost = () => {
+    
+  };
+
 
   const containerStyle = location.pathname.startsWith("/profile") ? "w-full" : "";
 
