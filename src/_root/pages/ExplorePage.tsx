@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useInView } from "react-intersection-observer";
+import useDebounce from '@/hooks/useDebounce';
 
 import { Input } from '@/components/ui';
 import { Loader, GridPostList } from '@/components/shared';
@@ -12,10 +13,14 @@ export type SearchResultProps = {
 const SearchResult = ({ isSearchFetching, searchedPosts }: SearchResultProps) => {
   if(isSearchFetching){
     return <Loader />
-  } else if(searchedPosts && searchedPosts.document.length > 0) {
-    // return GridPostList
-    <GridPostList />
+  } else if(searchedPosts && searchedPosts.documents.length > 0) {
+    return (
+      <>
+        {/* <GridPostList /> */}
+      </>
+    )
   } else {
+
     return (
       <>
         <p className='text-light-4 mt-10 text-center w-full'>
@@ -28,7 +33,14 @@ const SearchResult = ({ isSearchFetching, searchedPosts }: SearchResultProps) =>
 
 const ExplorePage = () => {
 
-  
+  // const { ref, inView } = useInView();
+
+  const [searchValue, setSearchValue] = useState("");
+  const debounceSearch = useDebounce(searchValue, 5000);
+
+  useEffect(() => {
+    
+  }, []);
 
   return (
     <>
