@@ -9,11 +9,29 @@ import {
 } from 'react-router-dom';
 
 import { Button } from '@/components/ui';
+import { useUserContext } from '@/context/AuthContext';
+import { useGetUserById } from '@/lib/react-query/queries';
+import { GridPostList, Loader } from '@/components/shared';
 
 interface StabBlockProps {
   value:  string | number;
   label: string;
-}
+};
+
+const StatBlock = ({ value, label }: StabBlockProps) => {
+  return (
+    <>
+      <div className='flex-center gap-2'>
+        <p className='small-semibold lg:body-bold text-primary-500'>
+          {value}
+        </p>
+        <p className='small-medium lg:base-medium text-light-2'>
+          {label}
+        </p>
+      </div>
+    </>
+  );
+};
 
 const ProfilePage = () => {
   return (
