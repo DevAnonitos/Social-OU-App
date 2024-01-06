@@ -16,6 +16,7 @@ import {
 } from "@/types";
 
 import { 
+  createUserAccount,
   getCurrentUser,
   signInAccount,
   signOutAccount,
@@ -23,14 +24,21 @@ import {
   getUsers,
   getUserById,
 } from "../appwrite/api";
-import exp from "constants";
+
+// SignUpAccount
+
+export const useCreateUserAccount = () => {
+  return useMutation({
+    mutationFn: (user: INewUser) => createUserAccount(user),
+  });
+};
 
 // SignInAccount
 export const useSignInAccount = () => {
   return useMutation({
     mutationFn: (user: { 
       email: string, 
-      password: string 
+      password: string, 
     }) => signInAccount(user),
   });
 };

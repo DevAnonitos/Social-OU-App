@@ -19,7 +19,8 @@ import {
 
 import { SignUpValidation } from '@/lib/validation';
 
-import { createUserAccount } from '@/lib/appwrite/api';
+import { useSignInAccount, } from '@/lib/react-query/queries';
+import { useUserContext } from '@/context/AuthContext';
 
 const SignupForm = () => {
 
@@ -37,10 +38,8 @@ const SignupForm = () => {
   });
 
   async function onSubmit (values: z.infer<typeof SignUpValidation>) {
-    const newUser =  await createUserAccount(values);
-
-    console.log(newUser);
-  }
+    
+  };
 
   return (
     <>
