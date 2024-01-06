@@ -2,7 +2,7 @@ import React from 'react';
 import * as z from "zod";
 import { useForm } from 'react-hook-form';
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { 
   Form, 
@@ -18,11 +18,16 @@ import {
 import { Loader } from '@/components/shared';
 
 import { SignInValidation } from '@/lib/validation';
+import { useUserContext } from '@/context/AuthContext';
+import { useSignInAccount } from '@/lib/react-query/queries';
 
 const SigninForm = () => {
 
   const { toast } = useToast();
   const navigate = useNavigate();
+  const { checkAuthUser, isLoading: isUserLoading } = useUserContext();
+
+  const { mutateAsync: signInAccount } =  useSignInAccount();
 
   const form = useForm<z.infer<typeof SignInValidation>>({
     resolver: zodResolver(SignInValidation),
@@ -33,7 +38,25 @@ const SigninForm = () => {
   });
 
   const handleSignIn = async (user: z.infer<typeof SignInValidation>) => {
-    
+    const session = await signInAccount(user);
+
+    if(!session) {
+      toast({ title: "Login Failed. Please try again." });
+
+      return;
+    }
+
+    const isLoggedIn = await checkAuthUser();
+
+    if(isLoggedIn) {
+      form.reset();
+
+      navigate("/");
+    } else {
+      toast({ title: "Login Failed. Please try again" });
+
+      return;
+    }
   };  
 
   return (
@@ -74,7 +97,7 @@ const SigninForm = () => {
 
             <FormField
               control={form.control}
-              name='email'
+              name='password'
               render={({ field }) => (
                 <>
                   <FormItem>
@@ -91,11 +114,21 @@ const SigninForm = () => {
             />
 
             <Button type='submit' className='shad-button_primary'>
-              LogIn
+              {isUserLoading ? (
+                <>
+                  <div className='flex-center gap-2'>
+                    <Loader /> Loading...
+                  </div>
+                </>
+              ): (
+                <>
+                  Log in
+                </>
+              )}
             </Button>
 
             <p className="flex flex-col justify-center items-center text-small-regular text-light-2 text-center mt-2">
-            <Link
+              <Link
                 to="/sign-up"
                 className="text-primary-500 text-small-semibold ml-1 bg-primary-500 p-2 mb-2 rounded-xl"
               >
