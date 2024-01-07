@@ -14,6 +14,7 @@ import {
   Input,
   Button,
   useToast,
+  ToastAction,
 } from '@/components/ui';
 
 import { Loader } from '@/components/shared';
@@ -54,7 +55,12 @@ const SignupForm = () => {
       const newUser = await createUserAccount(user);
 
       if(!newUser) {
-        toast({ title: "SignUpFail.Please SignUp again!" });
+        toast({ 
+          title: "SignUpFail.Please SignUp again!", 
+          variant: "destructive",
+          action: <ToastAction className='border-[1px] border-gray-700' altText="Try again">Try again</ToastAction>,
+          className: "border-[1px] border-gray-700"
+        });
 
         return;
       }
@@ -65,7 +71,12 @@ const SignupForm = () => {
       });
 
       if(!session) {
-        toast({ title: "Something went wrong. Please login your new account" });
+        toast({ 
+          title: "Something went wrong. Please login your new account",
+          variant: "destructive",
+          action: <ToastAction className='border-[1px] border-gray-700' altText="Try again">Try again</ToastAction>,
+          className: "border-[1px] border-gray-700" 
+        });
 
         navigate("/sign-in");
 
