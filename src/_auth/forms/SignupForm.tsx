@@ -19,13 +19,14 @@ import {
 
 import { SignUpValidation } from '@/lib/validation';
 
-import { useSignInAccount, } from '@/lib/react-query/queries';
+import { useSignInAccount, useCreateUserAccount } from '@/lib/react-query/queries';
 import { useUserContext } from '@/context/AuthContext';
 
 const SignupForm = () => {
 
   const { toast } = useToast();
   const navigate = useNavigate();
+  const { checkAuthUser, isLoading: isUserLoading } = useUserContext();
 
   const form = useForm<z.infer<typeof SignUpValidation>>({
     resolver: zodResolver(SignUpValidation),
@@ -37,8 +38,53 @@ const SignupForm = () => {
     },
   });
 
-  async function onSubmit (values: z.infer<typeof SignUpValidation>) {
-    
+  // Queries
+  const { 
+    mutateAsync: createUserAccount, 
+    isLoading: isCreatingAccount, 
+  }  = useCreateUserAccount();
+  const { 
+    mutateAsync: signInAccount, 
+    isLoading: isSigningInUser 
+  } = useSignInAccount();
+
+  const handleSignUp = async (user: z.infer<typeof SignUpValidation>) => {
+    try {
+      const newUser = await createUserAccount(user);
+
+      if(!newUser) {
+        toast({ title: "SignUpFail.Please SignUp again!" });
+
+        return;
+      }
+
+      const session = await signInAccount({
+        email: user.email,
+        password: user.password,
+      });
+
+      if(!session) {
+        toast({ title: "Something went wrong. Please login your new account" });
+
+        navigate("/sign-in");
+
+        return;
+      }
+
+      const isLoggedIn = await checkAuthUser();
+
+      if(isLoggedIn) {
+        form.reset();
+
+        navigate("/");
+      } else {
+        toast({ title: "Login Fail. Please try again" });
+
+        return;
+      }
+    } catch (error: any) {
+      console.log({error});
+    }
   };
 
   return (
@@ -56,7 +102,7 @@ const SignupForm = () => {
 
           <form 
             className='flex flex-col gap-5 w-full mt-4' 
-            onSubmit={form.handleSubmit(onSubmit)}
+            onSubmit={form.handleSubmit(handleSignUp)}
           >
             <FormField
               control={form.control}
