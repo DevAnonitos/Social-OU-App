@@ -17,6 +17,8 @@ import {
   useToast,
 } from '@/components/ui';
 
+import { Loader } from '@/components/shared';
+
 import { SignUpValidation } from '@/lib/validation';
 
 import { useSignInAccount, useCreateUserAccount } from '@/lib/react-query/queries';
@@ -45,7 +47,7 @@ const SignupForm = () => {
   }  = useCreateUserAccount();
   const { 
     mutateAsync: signInAccount, 
-    isLoading: isSigningInUser 
+    isLoading: isSigningInUser, 
   } = useSignInAccount();
 
   const handleSignUp = async (user: z.infer<typeof SignUpValidation>) => {
@@ -169,7 +171,15 @@ const SignupForm = () => {
             />
 
             <Button type='submit' className='shad-button_primary'>
-              Sign Up
+              {isCreatingAccount || isSigningInUser || isUserLoading ? (
+                <>
+                  <Loader /> Loading...
+                </>
+              ): (
+                <>
+                  Sign Up
+                </>
+              )}
             </Button>
 
             <p className='flex flex-col justify-center items-center text-small-regular text-light-2 text-center mt-1'>
