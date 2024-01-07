@@ -93,13 +93,7 @@ export  function AuthProvider ({ children }: { children: React.ReactNode }) {
     checkAuthUser,
   };
 
-  return (
-    <>
-      <AuthContext.Provider value={value}>
-        {children}
-      </AuthContext.Provider>; 
-    </>
-  )
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
 
 export const useUserContext = () => useContext(AuthContext);

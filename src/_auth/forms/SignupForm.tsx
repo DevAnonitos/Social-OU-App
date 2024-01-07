@@ -10,8 +10,7 @@ import {
   FormField, 
   FormItem, 
   FormLabel, 
-  FormMessage, 
-  FormDescription,
+  FormMessage,
   Input,
   Button,
   useToast,
@@ -43,11 +42,11 @@ const SignupForm = () => {
   // Queries
   const { 
     mutateAsync: createUserAccount, 
-    isLoading: isCreatingAccount, 
+    isPending: isCreatingAccount, 
   }  = useCreateUserAccount();
   const { 
     mutateAsync: signInAccount, 
-    isLoading: isSigningInUser, 
+    isPending: isSigningInUser, 
   } = useSignInAccount();
 
   const handleSignUp = async (user: z.infer<typeof SignUpValidation>) => {
