@@ -6,7 +6,7 @@ import { Models } from 'appwrite';
 type GridPostListProps = {
   post: Models.Document[];
   showUser?: boolean;
-  showStats:  boolean;
+  showStats?:  boolean;
 };
 
 const GridPostList = ({post, showUser = true, showStats = true }: GridPostListProps) => {
