@@ -6,12 +6,26 @@ import { Loader } from '.';
 import { sidebarLinks } from '@/constants';
 import { Button } from '../ui';
 
-let isLoading: string;
+import { useUserContext, INITIAL_USER } from '@/context/AuthContext';
+import { useSignOutAccount } from '@/lib/react-query/queries';
 
 const LeftSideBar = () => {
 
   const navigate = useNavigate();
   const { pathname } = useLocation();
+  const { user, setUser, setIsAuthenticated, isLoading } = useUserContext();
+
+  const { mutate: signOut } = useSignOutAccount();
+
+  const handleSignOut = async (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    e.preventDefault();
+    signOut();
+    setIsAuthenticated(false);
+    setUser(INITIAL_USER);
+    navigate("/sign-in");
+  };
 
   return (
     <>
@@ -75,7 +89,7 @@ const LeftSideBar = () => {
           </ul>
         </div>
 
-        <Button variant="ghost" className='shad-button_ghost' onClick={() => {}}>
+        <Button variant="ghost" className='shad-button_ghost' onClick={(e) => handleSignOut(e)}>
           <img src="/assets/icons/logout.svg" alt="logout" />
           <p className="small-medium lg:base-medium text-red">
             LogoutApp
