@@ -14,6 +14,7 @@ import {
   Input,
   Button,
   useToast,
+  ToastAction,
 } from '@/components/ui';
 import { Loader } from '@/components/shared';
 
@@ -41,7 +42,12 @@ const SigninForm = () => {
     const session = await signInAccount(user);
 
     if(!session) {
-      toast({ title: "Login Failed. Please try again." });
+      toast({ 
+        title: "Login Failed. Please try again.",
+        variant: "destructive",
+        action: <ToastAction className='border-[1px] border-gray-700' altText="Try again">Try again</ToastAction>,
+        className: "border-[1px] border-gray-700",
+      });
 
       return;
     }
@@ -53,7 +59,12 @@ const SigninForm = () => {
 
       navigate("/");
     } else {
-      toast({ title: "Login Failed. Please try again" });
+      toast({ 
+        title: "Login Failed. Please try again",
+        variant: "destructive",
+        action: <ToastAction className='border-[1px] border-gray-700' altText="Try again">Try again</ToastAction>,
+        className: "border-[1px] border-gray-700"
+      });
 
       return;
     }
