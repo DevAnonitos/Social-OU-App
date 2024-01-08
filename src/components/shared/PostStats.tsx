@@ -3,6 +3,8 @@ import { useLocation } from 'react-router-dom';
 import { Models } from 'appwrite';
 import { checkIsLiked } from '@/lib/utils';
 
+import { useGetCurrentUser } from '@/lib/react-query/queries';
+
 type PostStateProps = {
   post: Models.Document;
   userId: string;
@@ -12,17 +14,27 @@ const PostStats = ({ userId }: PostStateProps) => {
 
   const location = useLocation();
 
-
-  const [likes, setLikes] = useState<string>();
+  const [likes, setLikes] = useState<string[]>();
   const [isSaved, setIsSaved] = useState(false);
 
-  const handleLikePost = () => {
+  const { data: currentUser } = useGetCurrentUser();
+
+  const handleLikePost = (
+    e: React.MouseEvent<HTMLImageElement, MouseEvent>
+  ) => {
 
   };
 
-  const handlSavePost = () => {
+  const handleSavePost = (
+    e: React.MouseEvent<HTMLImageElement, MouseEvent>,
+  ) => {
     
   };
+
+  useEffect(() => {
+
+  }, []);
+
 
 
   const containerStyle = location.pathname.startsWith("/profile") ? "w-full" : "";
@@ -36,7 +48,8 @@ const PostStats = ({ userId }: PostStateProps) => {
             alt="Like" 
             width={20} 
             height={20} 
-            className='cursor-pointer' 
+            className='cursor-pointer'
+            onClick={(e) => handleLikePost(e)} 
           />
           <p className='small-medium lg:base-medium'>
             {/* Length like  */}
@@ -50,6 +63,7 @@ const PostStats = ({ userId }: PostStateProps) => {
             width={20}
             height={20}
             className='cursor-pointer'
+            onClick={(e) => handleSavePost(e)}
           />
         </div>
       </div>
