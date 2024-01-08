@@ -45,7 +45,7 @@ const SigninForm = () => {
       toast({ 
         title: "Login Failed. Please try again.",
         variant: "destructive",
-        action: <ToastAction className='border-[1px] border-gray-700' altText="Try again">Try again</ToastAction>,
+        action: <ToastAction className='border-[1px] border-gray-700 text-red' altText="Try again">Try again</ToastAction>,
         className: "border-[1px] border-gray-700",
       });
 

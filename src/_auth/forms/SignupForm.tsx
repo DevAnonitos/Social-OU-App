@@ -58,7 +58,7 @@ const SignupForm = () => {
         toast({ 
           title: "SignUpFail.Please SignUp again!", 
           variant: "destructive",
-          action: <ToastAction className='border-[1px] border-gray-700' altText="Try again">Try again</ToastAction>,
+          action: <ToastAction className='border-[1px] border-gray-700 text-red' altText="Try again">Try again</ToastAction>,
           className: "border-[1px] border-gray-700"
         });
 
@@ -74,7 +74,7 @@ const SignupForm = () => {
         toast({ 
           title: "Something went wrong. Please login your new account",
           variant: "destructive",
-          action: <ToastAction className='border-[1px] border-gray-700' altText="Try again">Try again</ToastAction>,
+          action: <ToastAction className='border-[1px] border-gray-700 text-red' altText="Try again">Try again</ToastAction>,
           className: "border-[1px] border-gray-700" 
         });
 
