@@ -116,7 +116,7 @@ const SigninForm = () => {
                       Password
                     </FormLabel>
                     <FormControl>
-                      <Input type="text" className="shad-input" {...field} />
+                      <Input type="password" className="shad-input" {...field} />
                     </FormControl>
                     <FormMessage className='text-red' />
                   </FormItem>
