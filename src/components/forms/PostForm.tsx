@@ -144,6 +144,7 @@ const PostForm = ({ post, action }: PostFormProps) => {
               type='submit'
               className='shad-button_primary whitespace-nowrap'
             >
+              {<Loader />}
               {action} Post
             </Button>
           </div>
