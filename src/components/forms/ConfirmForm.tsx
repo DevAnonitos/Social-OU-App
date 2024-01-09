@@ -9,7 +9,7 @@ import {
   AlertDialogFooter, 
   AlertDialogHeader, 
   AlertDialogTitle, 
-  AlertDialogTrigger 
+  AlertDialogTrigger, 
 } from '../ui';
 
 const ConfirmForm = () => {
@@ -20,10 +20,9 @@ const ConfirmForm = () => {
         </AlertDialogTrigger>
         <AlertDialogContent className='border-[1px] border-gray-700'>
           <AlertDialogHeader>
-            <AlertDialogTitle className='text-red'>Are you sure delete?</AlertDialogTitle>
+            <AlertDialogTitle className='text-red'>Are you want to delete?</AlertDialogTitle>
             <AlertDialogDescription>
-              This action cannot be undone. This will permanently delete your
-              account and remove your data from our servers.
+              This action cannot be undone. This will permanently delete your data from our servers.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
