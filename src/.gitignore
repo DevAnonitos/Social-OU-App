@@ -3,3 +3,5 @@
 # run "dep ensure --vendor-only" to download the dependencies to vendor/ based
 # on the Gopkg.{toml,lock} files in that directory.
 vendor/
+target
+Cargo.lock
