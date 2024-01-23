@@ -140,7 +140,7 @@ const SignupForm = () => {
                   <FormItem>
                     <FormLabel className="shad-form_label">UserName</FormLabel>
                     <FormControl>
-                      <Input type="password" className="shad-input" {...field} />
+                      <Input type="text" className="shad-input" {...field} />
                     </FormControl>
                     <FormMessage className='text-red' />
                   </FormItem>
@@ -180,10 +180,12 @@ const SignupForm = () => {
               )}
             />
 
-            <Button type='submit' className='shad-button_primary'>
+            <Button type='submit' className='shad-button_primary justify-center items-center'>
               {isCreatingAccount || isSigningInUser || isUserLoading ? (
                 <>
-                  <Loader /> Loading...
+                  <div className='flex-center gap-2'>
+                    <Loader /> Loading...
+                  </div>
                 </>
               ): (
                 <>
