@@ -41,7 +41,7 @@
 		"react-share": "^5.0.3",
 		"socket.io-client": "^4.7.2",
 		"solidjs-dropzone": "^1.0.0",
-		"swiper": "^11.0.5",
+		"swiper": "^11.0.7",
 		"tailwind-merge": "^2.2.0",
 		"tsconfig-paths": "^4.2.0",
 		"zod": "^3.22.4"
